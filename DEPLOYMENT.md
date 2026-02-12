@@ -29,10 +29,19 @@ Este es el paso donde la mayoría se pierde. En la pantalla donde dice "Import P
 4. **IMPORTANTE**: Después de escribir cada una, haz clic en el botón blanco que dice **"Add"** a la derecha para que se guarde en la lista.
 5. Una vez veas las 3 en la lista de abajo, ya puedes darle al botón azul **"Deploy"**.
 
-## 4. Desplegar
+## 4. Desplegar y Compartir el Link 🚀
 1. Haz clic en **"Deploy"**.
-2. ¡Listo! Vercel te dará una URL (ej. `calculadora-cafe.vercel.app`) que puedes enviar a cualquier persona.
+2. Vercel te mostrará una pantalla de éxito con una captura de tu sitio.
+3. **IMPORTANTE**: No copies el link de la barra de direcciones de esa pantalla, porque ese link suele ser privado de Vercel.
 
+### Cómo obtener el link para tus clientes:
+1. Entra a tu proyecto en Vercel.
+2. Ve a la pestaña **"Settings"** (Arriba).
+3. En el menú de la izquierda, haz clic en **"Domains"**.
+4. Ahí verás un link limpio (probablemente `coffeeshop-calculator.vercel.app`).
+5. **Ese es el que debes copiar y enviar.**
+
+---
 ## 5. Configurar Supabase (Redirect URL)
 Para que el login funcione correctamente en la versión publicada, debes avisarle a Supabase cuál es la nueva URL:
 1. Ve al panel de [Supabase](https://supabase.com).

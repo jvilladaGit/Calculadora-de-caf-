@@ -25,4 +25,4 @@
 - [x] Autenticación de Usuarios (Login/Registro) con captura de Nombre y Teléfono
 - [x] Base de Datos para registrar leads y sus proyecciones (Supabase)
 - [x] Panel de Administración con filtros de búsqueda y exportación a CSV
-- [x] Despliegue en la nube (Vercel/Netlify) - *Configuración y build verificados*
+- [x] Despliegue en la nube (Vercel/Netlify) - **¡EN VIVO!** 🚀

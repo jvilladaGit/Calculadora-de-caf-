@@ -32,20 +32,39 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Layout */
+/* Mobile Responsiveness & Layout Overhaul */
 .layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1.5rem;
+  /* Reduced from 2rem */
   max-width: 1400px;
   margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .layout {
+    padding: 1rem;
+  }
 }
 
 .main-content {
   display: flex;
   gap: 4rem;
   margin-top: 3rem;
+}
+
+@media (max-width: 1100px) {
+  .main-content {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+  }
 }
 
 .inputs-column {
@@ -86,7 +105,15 @@ body {
   color: var(--text-secondary);
   font-size: 0.9rem;
   margin-left: 3rem;
-  /* Align with text start */
+  /* Align with text start desktop */
+}
+
+@media (max-width: 600px) {
+  .subtitle {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    display: block;
+  }
 }
 
 /* Cards & Inputs */
@@ -96,6 +123,12 @@ body {
   border-radius: 16px;
   padding: 2rem;
   transition: border-color 0.2s;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1.25rem;
+  }
 }
 
 .card:hover {
@@ -126,6 +159,15 @@ body {
 
 .input-row.three-col {
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 600px) {
+
+  .input-row,
+  .input-row.three-col {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
 }
 
 .input-row:last-child {
@@ -170,6 +212,12 @@ input[type="number"]:focus {
   top: 2rem;
 }
 
+@media (max-width: 900px) {
+  .sticky {
+    position: static;
+  }
+}
+
 .primary-result {
   text-align: center;
   padding: 2rem 0;
@@ -187,6 +235,16 @@ input[type="number"]:focus {
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .value {
+    font-size: 2.5rem;
+  }
+
+  .sc-currency {
+    font-size: 1.5rem;
+  }
 }
 
 .period {
@@ -209,6 +267,17 @@ input[type="number"]:focus {
   margin-bottom: 2rem;
 }
 
+@media (max-width: 600px) {
+  .secondary-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metric-item:last-child {
+    grid-column: span 2;
+    padding-top: 0.5rem;
+  }
+}
+
 .metric-item {
   display: flex;
   flex-direction: column;
@@ -220,6 +289,7 @@ input[type="number"]:focus {
   font-size: 0.75rem;
   color: var(--text-secondary);
   text-transform: uppercase;
+  text-align: center;
 }
 
 .metric-item .value {
@@ -227,48 +297,7 @@ input[type="number"]:focus {
   font-weight: 600;
 }
 
-.highlight {
-  color: var(--accent);
-}
-
-.monthly-breakdown {
-  background: var(--bg-input);
-  border-radius: 8px;
-  padding: 1rem;
-}
-
-.breakdown-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  padding: 0.4rem 0;
-  color: var(--text-secondary);
-}
-
-.breakdown-row.minus {
-  color: var(--text-muted);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 900px) {
-  .main-content {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .layout {
-    padding: 1rem;
-  }
-
-  .value {
-    font-size: 2.5rem;
-  }
-
-  .input-row.three-col {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}/* Tabs */
+/* Tabs */
 .tabs-root {
   display: flex;
   flex-direction: column;
@@ -282,7 +311,8 @@ input[type="number"]:focus {
   padding: 0.3rem;
   border-radius: 12px;
   border: 1px solid var(--border-subtle);
-  overflow-x: auto; /* Scroll on mobile */
+  overflow-x: auto;
+  /* Scroll on mobile */
 }
 
 .tabs-trigger {
@@ -306,7 +336,7 @@ input[type="number"]:focus {
 .tabs-trigger.active {
   background: var(--bg-card);
   color: var(--text-primary);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   font-weight: 500;
 }
 
@@ -315,8 +345,15 @@ input[type="number"]:focus {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Slider updates */
@@ -338,7 +375,8 @@ input[type="number"]:focus {
   border-radius: 50%;
   background: var(--text-primary);
   cursor: pointer;
-  margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  margin-top: -6px;
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
 
 .range-slider::-webkit-slider-runnable-track {
@@ -349,4 +387,76 @@ input[type="number"]:focus {
   border-radius: 2px;
 }
 
+/* Responsive Helpers */
+.responsive-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 1rem;
+}
 
+@media (max-width: 480px) {
+  .responsive-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+
+  .responsive-header .icon-group {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.icon-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.executive-summary {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.summary-header h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.summary-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+.monthly-breakdown {
+  background: var(--bg-input);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  color: var(--text-secondary);
+}
+
+.breakdown-row.minus {
+  color: var(--text-muted);
+}

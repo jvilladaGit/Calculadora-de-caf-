@@ -397,12 +397,12 @@ function App() {
         {/* --- RIGHT COLUMN: RESULTS --- */}
         <div className="results-column">
           <Card id="profit-projection" className="result-card sticky">
-            <CardHeader style={{ justifyContent: 'space-between' }}>
+            <CardHeader className="responsive-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <DollarSign size={24} />
                 <h2>Ganancia Mensual Neta</h2>
               </div>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <div className="icon-group">
                 <button
                   onClick={() => setShowCharts(!showCharts)}
                   className="icon-button"
@@ -459,8 +459,8 @@ function App() {
             />
 
             {showCharts ? (
-              <div className="charts-container" style={{ marginTop: '1rem' }}>
-                <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', textAlign: 'center' }}>Distribución de Costos</h3>
+              <div className="charts-container" style={{ marginTop: '1.5rem' }}>
+                <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem', textAlign: 'center' }}>Distribución de Costos</h3>
                 <CostBreakdownChart
                   coffeeCost={results.monthlyCoffeeCost}
                   consumablesCost={results.monthlyConsumablesCost}
@@ -468,9 +468,9 @@ function App() {
                   netProfit={results.netMonthlyProfit}
                 />
 
-                <div style={{ margin: '1.5rem 0' }} />
+                <div style={{ margin: '2.5rem 0' }} />
 
-                <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', textAlign: 'center' }}>Ingresos vs. Costos</h3>
+                <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem', textAlign: 'center' }}>Ingresos vs. Costos</h3>
                 <RevenueChart
                   revenue={results.monthlyRevenue}
                   totalCosts={results.monthlyCosts + fixedCosts.totalMonthlyFixed}
@@ -498,16 +498,12 @@ function App() {
 
 
             {/* Executive Summary Report */}
-            <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', color: 'var(--text-secondary)' }}>
+            <div className="executive-summary">
+              <div className="summary-header">
                 <FileText size={16} />
-                <h3 style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Resumen Ejecutivo</h3>
+                <h3>Resumen Ejecutivo</h3>
               </div>
-              <p style={{
-                fontSize: '0.9rem',
-                lineHeight: '1.6',
-                color: 'var(--text-muted)'
-              }}>
+              <p className="summary-text">
                 {reportText}
               </p>
             </div>
