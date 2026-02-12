@@ -70,7 +70,7 @@ function App() {
 
   // Auth State
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<any | null>(null);
   const [showAdmin, setShowAdmin] = useState(false);
 
   useEffect(() => {
@@ -172,9 +172,9 @@ function App() {
       });
 
       alert('✅ Proyección guardada exitosamente');
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error saving projection:', error);
-      alert('❌ Error al guardar: ' + error.message);
+      alert('❌ Error al guardar: ' + (error instanceof Error ? error.message : 'Error desconocido'));
     }
   };
 
