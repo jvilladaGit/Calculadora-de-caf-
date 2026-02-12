@@ -138,13 +138,38 @@ function App() {
         scale: 2, // Better resolution
       });
 
-      const image = canvas.toDataURL('image/png');
+      const dataUrl = canvas.toDataURL('image/png');
+
+      // Check for Web Share API support for files (Mobile optimized)
+      if (navigator.share && navigator.canShare) {
+        try {
+          // Convert dataURL to Blob/File for sharing
+          const response = await fetch(dataUrl);
+          const blob = await response.blob();
+          const file = new File([blob], 'proyeccion-rentabilidad.png', { type: 'image/png' });
+
+          if (navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              files: [file],
+              title: 'Proyección Económica - Coffee Shop',
+              text: 'Resultados de mi proyección de rentabilidad para negocio de café.'
+            });
+            return; // Exit if shared successfully
+          }
+        } catch (shareError) {
+          console.error('Error sharing:', shareError);
+          // Fallback to traditional download if sharing fails
+        }
+      }
+
+      // Traditional download fallback (Desktop or unsupported mobile)
       const link = document.createElement('a');
-      link.href = image;
+      link.href = dataUrl;
       link.download = 'proyeccion-rentabilidad-cafe.png';
       link.click();
     } catch (error) {
       console.error('Error generating image:', error);
+      alert('Error al generar la imagen del informe.');
     }
   };
 
