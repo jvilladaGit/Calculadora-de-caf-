@@ -8,7 +8,7 @@ export interface LeadEntry {
     phone: string | null;
     data_consent: boolean | null;
     projection_name: string;
-    data: any;
+    data: Record<string, any>;
     net_monthly_profit: number | null;
     roi_months: number | null;
     created_at: string;

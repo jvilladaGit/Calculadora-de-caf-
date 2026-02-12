@@ -13,14 +13,21 @@ Si aún no lo has hecho, asegúrate de que todos los cambios locales estén en t
 2. Haz clic en **"Add New"** > **"Project"**.
 3. Selecciona el repositorio de la calculadora (`coffeeshop-calculator`).
 
-## 3. Configurar Variables de Entorno (CRÍTICO) 🔑
-Antes de darle a "Deploy", busca la sección **Environment Variables** y añade estas tres (cópiatelas de tu archivo `.env.local`):
+## 3. Configurar Variables de Envío (CRÍTICO) 🔑
+Este es el paso donde la mayoría se pierde. En la pantalla donde dice "Import Project" o "Configure Project":
+
+1. Baja hasta ver un título que dice **"Environment Variables"** (está debajo de "Build and Output Settings").
+2. Verás dos cajitas vacías: una dice **Key** (Nombre) y otra dice **Value** (Valor).
+3. Debes añadir estas tres una por una (copia y pega):
 
 | Key | Value |
 | :--- | :--- |
-| `VITE_SUPABASE_URL` | Tu URL de Supabase |
-| `VITE_SUPABASE_ANON_KEY` | Tu llave anónima de Supabase |
+| `VITE_SUPABASE_URL` | Copia el link de tu archivo `.env.local` |
+| `VITE_SUPABASE_ANON_KEY` | Copia la clave larga de tu archivo `.env.local` |
 | `VITE_ADMIN_EMAIL` | `jvillada@ekipando.com` |
+
+4. **IMPORTANTE**: Después de escribir cada una, haz clic en el botón blanco que dice **"Add"** a la derecha para que se guarde en la lista.
+5. Una vez veas las 3 en la lista de abajo, ya puedes darle al botón azul **"Deploy"**.
 
 ## 4. Desplegar
 1. Haz clic en **"Deploy"**.

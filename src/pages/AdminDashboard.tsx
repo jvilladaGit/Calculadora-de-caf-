@@ -18,8 +18,8 @@ export function AdminDashboard({ onBack }: AdminDashboardProps) {
         try {
             const data = await getAllLeads();
             setLeads(data);
-        } catch (err: any) {
-            setError(err.message);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Error desconocido');
         } finally {
             setLoading(false);
         }
