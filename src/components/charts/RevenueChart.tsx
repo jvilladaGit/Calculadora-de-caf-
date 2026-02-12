@@ -21,17 +21,14 @@ export function RevenueChart({ revenue, totalCosts }: RevenueChartProps) {
                 >
                     <Tooltip
                         cursor={{ fill: 'transparent' }}
-                        formatter={(value: number | undefined) => {
-                            if (value === undefined) return ['0', ''];
-                            return [
-                                new Intl.NumberFormat('es-CO', {
-                                    style: 'currency',
-                                    currency: 'COP',
-                                    maximumFractionDigits: 0
-                                }).format(value),
-                                ''
-                            ];
-                        }}
+                        formatter={(value: any) => [
+                            new Intl.NumberFormat('es-CO', {
+                                style: 'currency',
+                                currency: 'COP',
+                                maximumFractionDigits: 0
+                            }).format(Number(value)),
+                            ''
+                        ]}
                         contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px' }}
                         itemStyle={{ color: '#fff' }}
                     />
