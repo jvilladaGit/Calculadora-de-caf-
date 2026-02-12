@@ -28,7 +28,7 @@ export function NumberInput({
             <div className="input-wrapper">
                 <input
                     type="number"
-                    value={value}
+                    value={value === 0 ? '' : value}
                     onChange={(e) => onChange(e.target.value)}
                     step={step}
                     min={min}
