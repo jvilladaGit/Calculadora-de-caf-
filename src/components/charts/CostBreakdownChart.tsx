@@ -45,7 +45,7 @@ export function CostBreakdownChart({
                         ))}
                     </Pie>
                     <Tooltip
-                        formatter={(value: number) => formatCurrency(value)}
+                        formatter={(value: number | undefined) => formatCurrency(value ?? 0)}
                         contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px' }}
                         itemStyle={{ color: '#fff' }}
                     />

@@ -4,6 +4,9 @@ export interface LeadEntry {
     id: string;
     user_id: string;
     email: string;
+    full_name: string | null;
+    phone: string | null;
+    data_consent: boolean | null;
     projection_name: string;
     data: any;
     net_monthly_profit: number | null;

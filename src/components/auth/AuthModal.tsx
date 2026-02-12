@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { supabase } from '../../lib/supabase';
-import { X, Mail, Lock, Loader2 } from 'lucide-react';
+import { X, Mail, Lock, Loader2, User, Phone } from 'lucide-react';
 
 interface AuthModalProps {
     isOpen: boolean;
@@ -12,6 +12,9 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [dataConsent, setDataConsent] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -33,6 +36,13 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                 const { error } = await supabase.auth.signUp({
                     email,
                     password,
+                    options: {
+                        data: {
+                            full_name: fullName,
+                            phone: phone,
+                            data_consent: dataConsent,
+                        }
+                    }
                 });
                 if (error) throw error;
             }
@@ -77,6 +87,50 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                 )}
 
                 <form onSubmit={handleAuth} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {!isLogin && (
+                        <>
+                            <div className="input-group" style={{ position: 'relative' }}>
+                                <User size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#666' }} />
+                                <input
+                                    type="text"
+                                    placeholder="Nombre completo"
+                                    value={fullName}
+                                    onChange={(e) => setFullName(e.target.value)}
+                                    required={!isLogin}
+                                    style={{
+                                        width: '100%', padding: '0.75rem 1rem 0.75rem 2.8rem',
+                                        background: '#0a0a0a', border: '1px solid #333', borderRadius: '8px', color: '#fff'
+                                    }}
+                                />
+                            </div>
+                            <div className="input-group" style={{ position: 'relative' }}>
+                                <Phone size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#666' }} />
+                                <input
+                                    type="tel"
+                                    placeholder="Teléfono (opcional)"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    style={{
+                                        width: '100%', padding: '0.75rem 1rem 0.75rem 2.8rem',
+                                        background: '#0a0a0a', border: '1px solid #333', borderRadius: '8px', color: '#fff'
+                                    }}
+                                />
+                            </div>
+                            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
+                                <input
+                                    type="checkbox"
+                                    id="consent"
+                                    checked={dataConsent}
+                                    onChange={(e) => setDataConsent(e.target.checked)}
+                                    required={!isLogin}
+                                    style={{ marginTop: '0.2rem', cursor: 'pointer' }}
+                                />
+                                <label htmlFor="consent" style={{ fontSize: '0.8rem', color: '#aaa', lineHeight: '1.4', cursor: 'pointer' }}>
+                                    Acepto los <span style={{ color: 'var(--accent)' }}>Términos y Condiciones</span> y la <span style={{ color: 'var(--accent)' }}>Política de Tratamiento de Datos (Habeas Data)</span> para recibir información.
+                                </label>
+                            </div>
+                        </>
+                    )}
                     <div className="input-group" style={{ position: 'relative' }}>
                         <Mail size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#666' }} />
                         <input

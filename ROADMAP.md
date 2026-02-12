@@ -22,7 +22,7 @@
 - [x] Exportar resultados (PDF/Imagen) - *Opcional*
 
 ## Fase 5: Estrategia de Leads y Nube ☁️
-- [x] Autenticación de Usuarios (Login/Registro) para guardar escenarios
-- [x] Base de Datos para registrar leads y sus proyecciones
-- [x] Panel de Administración para ver usuarios registrados
-- [ ] Despliegue en la nube (Vercel/Netlify)
+- [x] Autenticación de Usuarios (Login/Registro) con captura de Nombre y Teléfono
+- [x] Base de Datos para registrar leads y sus proyecciones (Supabase)
+- [x] Panel de Administración con filtros de búsqueda y exportación a CSV
+- [x] Despliegue en la nube (Vercel/Netlify) - *Configuración y build verificados*
