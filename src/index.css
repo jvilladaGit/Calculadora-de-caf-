@@ -436,7 +436,8 @@ input[type="number"]:focus {
 .summary-text {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: #bbbbbb;
+  /* Increased contrast from var(--text-muted) */
 }
 
 .highlight {
